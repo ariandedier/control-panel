@@ -1,13 +1,22 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import styled from "styled-components";
 import frame from '../assets/frame.png';
 import frame1 from '../assets/frame1.png';
+import { gsap } from "gsap";
 
 const Dash = () => {
-  return (
-    <Container>
 
-        <ContainerUp>
+    const timeline = gsap.timeline();
+
+    useEffect(() =>{
+        const Board = document.querySelectorAll(".Board");
+        timeline.from(Board, { opacity:0, y:-50, duration:1, stagger: 1});
+    },[])
+
+  return (
+    <Container className='Board'>
+
+        <ContainerUp className='Board'>
         <Mrr>
             <div className='title'>
                 <h3>MRR</h3> <h2>+32%</h2>
@@ -43,7 +52,7 @@ const Dash = () => {
         </SocialUp>
         </ContainerUp>
 
-        <ContainerUp>
+        <ContainerUp className='Board'>
             <RevCustomer>
             <div className='rev-down'>
                 <h3>Page Views</h3>
@@ -86,7 +95,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     padding: 120px;
-    margin-left: 200px;
+    margin-left: 220px;
     color: #fff;
     gap: 20px;
 `
